@@ -1,0 +1,124 @@
+/* Basic body layout */
+body {
+    margin: 0;
+    background-color: rgb(15, 38, 245);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+  }
+  
+  /* Each circle references a --base-rotate for its position on the ring */
+  .circle {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    
+    /* Use a CSS variable to store the circle's base rotation. */
+    --base-rotate: 0deg; /* default for the first circle */
+  
+    /* The floating animation references this base angle at each keyframe. */
+    animation: floatingCircles 3s infinite alternate ease-in-out;
+  }
+  
+  /* Assign a unique rotation and color to each circle */
+  .circle:nth-child(1) {
+    --base-rotate: 0deg;
+    background-color: rgb(255, 85, 0);
+  }
+  
+  .circle:nth-child(2) {
+    --base-rotate: 72deg;
+    background-color: orange;
+  }
+  
+  .circle:nth-child(3) {
+    --base-rotate: 144deg;
+    background-color: rgb(255, 234, 0);
+  }
+  
+  .circle:nth-child(4) {
+    --base-rotate: 216deg;
+    background-color: rgb(255, 195, 220);
+  }
+  
+  .circle:nth-child(5) {
+    --base-rotate: 288deg;
+    background-color: rgb(252, 249, 209);
+  }
+  
+  /* 
+    Keyframes combine:
+     1) The ring layout (rotate -> translate -> rotate back)
+     2) Floating transforms (translate, scale, rotate)
+  */
+  @keyframes floatingCircles {
+    0% {
+      transform:
+        rotate(var(--base-rotate))
+        translate(100px)
+        rotate(calc(-1 * var(--base-rotate)))
+        
+        translate(0px, -10px)
+        scale(1)
+        rotate(0deg);
+      opacity: 1;
+    }
+  
+    25% {
+      transform:
+        rotate(var(--base-rotate))
+        translate(100px)
+        rotate(calc(-1 * var(--base-rotate)))
+  
+        translate(10px, -20px)
+        scale(1.2)
+        rotate(10deg);
+      opacity: 0.8;
+    }
+  
+    50% {
+      transform:
+        rotate(var(--base-rotate))
+        translate(100px)
+        rotate(calc(-1 * var(--base-rotate)))
+  
+        translate(-10px, 10px)
+        scale(0.7)
+        rotate(20deg);
+      opacity: 0.6;
+    }
+  
+    75% {
+      transform:
+        rotate(var(--base-rotate))
+        translate(100px)
+        rotate(calc(-1 * var(--base-rotate)))
+  
+        translate(20px, -5px)
+        scale(1.5)
+        rotate(30deg);
+      opacity: 0.9;
+    }
+  
+    100% {
+      transform:
+        rotate(var(--base-rotate))
+        translate(100px)
+        rotate(calc(-1 * var(--base-rotate)))
+  
+        translate(10px, 0px)
+        scale(1.2)
+        rotate(0deg);
+      opacity: 1;
+    }
+  }
+  
