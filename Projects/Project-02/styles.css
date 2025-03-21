@@ -1,72 +1,110 @@
-/* 使用 flex 布局让内容在页面中上下左右居中 */
+/* 让整个页面高度撑满，确保居中 */
 html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.container {
-  font-size: 30px;
-  line-height: 1.5;
-  text-align: center;
-}
-
-/* 把整行内容放在一个 div 里，防止换行 */
-.line {
-  display: inline-block;
-}
-
-/* 字母容器 */
-.shake {
-  display: inline-block;
-}
-
-.shake div {
-  display: inline-block;
-  /* 使用自定义属性 --duration（默认0.8s）控制动画时长 */
-  animation: shake var(--duration, 0.8s) infinite;
-  /* 在原有延时基础上加 2s 整体延迟（可自行修改或去掉） */
-  animation-delay: calc(var(--delay, 0s) + 2s);
-}
-
-/* 关键帧：上下左右抖动 */
-@keyframes shake {
-  0% {
-    transform: translate(0, 0);
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  25% {
-    transform: translate(
-      calc(var(--i) * var(--dx) * 3px),
-      calc(var(--i) * var(--dy) * 3px)
-    );
+  
+  /* 让文字居中，并控制它的消失和重新出现 */
+  .text-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    font-size: 24px;
+    opacity: 1;
+    animation: textFade 7s linear infinite;
+    animation-delay: 0s; /* 立即开始 */
+    animation-fill-mode: both;
   }
-  50% {
-    transform: translate(
-      calc(var(--i) * var(--dx) * -3px),
-      calc(var(--i) * var(--dy) * -3px)
-    );
+  
+  /* 窗户容器 */
+  .window {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    transform: translateY(-50%);
+    z-index: 999;
   }
-  75% {
-    transform: translate(
-      calc(var(--i) * var(--dx) * 3px),
-      calc(var(--i) * var(--dy) * -3px)
-    );
+  
+  /* 窗户图片 */
+  .window-img {
+    position: relative;
+    z-index: 1000;
+    display: block;
+    width: 200px;
+    height: auto;
   }
-  100% {
-    transform: translate(0, 0);
+  
+  /* 鸟容器 */
+  .bird {
+    position: absolute;
+    top: 50%;
+    left: -100px; /* 让鸟从左侧进入 */
+    transform: translateY(-50%);
+    z-index: 1;
+    opacity: 0;
+    animation: birdFly 7s linear infinite;
   }
+  
+  .bird img {
+    width: 100px;
+    height: auto;
+  }
+  
+  /* 文字的淡出 & 重新出现动画 */
+  @keyframes textFade {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5; /* 半透明 */
+    }
+    100% {
+      opacity: 0; /* 完全消失 */
+    }
+  }
+  
+  /* 鸟的飞行动画 */
+  @keyframes birdFly {
+    0% {
+      transform: translateX(0) translateY(-50%);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    50% {
+      transform: translateX(600px) translateY(-50%);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(1200px) translateY(-50%);
+      opacity: 0;
+    }
+  }
+  
+  @media print {
+    /* 移动文字到右下角 */
+    .text-container {
+      top: auto;
+      left: auto;
+      right: 30px;
+      bottom: 70px;
+      transform: none; /* 确保在右下角正常显示 */
+      text-align: right; /* 文字靠右对齐 */
+      font-size: 20px; /* 可以稍微调小字体 */
+    }
+
 }
 button {
-  position:fixed;
-  right: 30px;  
-  bottom: 30px; ;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-}
+    position:fixed;
+    right: 30px;  
+    bottom: 30px; ;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
