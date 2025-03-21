@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bird in Window (Position Only)</title>
+
+  <link rel="stylesheet" href="styles22.css" />
+</head>
+<body>
+
+  <!-- 居中文字 -->
+  <div class="text-container">
+    <p>When I'm reading, I'm distracted by something else.</p>
+  </div>
+
+  <!-- 窗户容器：绝对定位在左侧 -->
+  <div class="window">
+    <!-- 窗户图片：position + z-index让它高于鸟 -->
+    <img src="window.png" alt="Window" class="window-img" />
+
+    <!-- 鸟放在窗户内部，以便控制其飞行范围或遮挡效果 -->
+    <div class="bird">
+      <img src="bird.png" alt="Bird" />
+    </div>
+  </div>
+  <button onclick="window.location.href='index.html'">Next</button>
+</body>
+</html>

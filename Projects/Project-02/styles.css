@@ -1,0 +1,72 @@
+/* 使用 flex 布局让内容在页面中上下左右居中 */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  font-size: 30px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* 把整行内容放在一个 div 里，防止换行 */
+.line {
+  display: inline-block;
+}
+
+/* 字母容器 */
+.shake {
+  display: inline-block;
+}
+
+.shake div {
+  display: inline-block;
+  /* 使用自定义属性 --duration（默认0.8s）控制动画时长 */
+  animation: shake var(--duration, 0.8s) infinite;
+  /* 在原有延时基础上加 2s 整体延迟（可自行修改或去掉） */
+  animation-delay: calc(var(--delay, 0s) + 2s);
+}
+
+/* 关键帧：上下左右抖动 */
+@keyframes shake {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(
+      calc(var(--i) * var(--dx) * 3px),
+      calc(var(--i) * var(--dy) * 3px)
+    );
+  }
+  50% {
+    transform: translate(
+      calc(var(--i) * var(--dx) * -3px),
+      calc(var(--i) * var(--dy) * -3px)
+    );
+  }
+  75% {
+    transform: translate(
+      calc(var(--i) * var(--dx) * 3px),
+      calc(var(--i) * var(--dy) * -3px)
+    );
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+button {
+  position:fixed;
+  right: 30px;  
+  bottom: 30px; ;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}

@@ -1,0 +1,54 @@
+/* Overall page styling: red background, blue text */
+body {
+    background-color: red;
+    color: blue;
+    font-family: Arial, sans-serif;
+    margin: 2em;
+    position: relative;
+  }
+  /* Make the H1 title bigger */
+  h1 {
+    font-size: 3em; /* Increased font size */
+    color:blue;
+    margin-bottom: 0.5em;
+  }
+  /* Container holds the text, image, and button */
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+  /* Float the image to the right */
+  .image-right {
+    float: right;
+    margin: 0 0 1em 1em;
+    max-width: 400px;
+    height: auto;
+  }
+  /* The overlay covers the container */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    backdrop-filter: blur(8px);  
+    z-index: 2; 
+    display: none;       
+  }
+  #takeMedicine {
+    display: block;
+    margin: 1em auto;
+    padding: 0.8em 1.2em;
+    font-size: 1em;
+    background-color: blue;
+    color: white;
+    border-radius: 4px;
+    position: relative;
+    z-index: 3;
+  }
+
+  p:hover{
+    font-style: bold;
+    background-color: yellow;
+  }
