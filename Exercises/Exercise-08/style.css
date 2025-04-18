@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: white;
+}
+
+.full-body,
+.face,
+.pimple {
+  display: none;
+  max-width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+/* 默认显示全身图 */
+.full-body {
+  display: block;
+}
+
+/* 视口小于 1200px 时显示脸 */
+@media (max-width: 1200px) {
+  .full-body { display: none; }
+  .face { display: block; }
+}
+
+/* 视口小于 500px 时显示痘痘 */
+@media (max-width: 500px) {
+  .face { display: none; }
+  .pimple { display: block; }
+}
