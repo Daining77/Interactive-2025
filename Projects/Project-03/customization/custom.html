@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Weather Card Input with Fixed Date</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="navigation">
+      <a href="../index.html" class="logo">
+          <img src="../images/logo.png" alt="Marked.Blue Logo">
+      </a>
+      <div class="nav-right">
+          <a href="../publication/catalog.html">Catalog</a>
+          
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="image-wrapper">
+        <img id="mainImage" class="main-image" src="image1.png" alt="Main Display">
+        <div id="zipcodeBox" class="zipcode-box">ZIP CODE</div>
+        <div id="dateBox" class="date-box">Date</div>
+      </div>
+      <div class="sidebar">
+        <div class="icons">
+          <img id="sunIcon" src="sun.svg" alt="Sun Icon" width="48" height="48" style="cursor:pointer;">
+          <img id="cloudIcon" src="cloud.svg" alt="Cloud Icon" width="48" height="48" style="cursor:pointer;">
+        </div>
+        
+        <div>
+          <label for="zipInput">Address</label><br>
+          <input type="text" id="zipInput" placeholder="zip code" />
+        </div>
+        <div>
+          <label for="dateInput">Date</label><br>
+          <input type="date" id="dateInput" />
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
